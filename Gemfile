@@ -7,6 +7,8 @@ gem "rails", "~> 7.1.3"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
+gem "bootstrap", git: "https://github.com/twbs/bootstrap-rubygem"
+gem "dartsass-rails"
 
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.4"
@@ -68,3 +70,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# gem "tailwindcss-rails", "~> 2.3"

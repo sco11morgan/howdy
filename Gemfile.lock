@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/twbs/bootstrap-rubygem
+  revision: 90467dee09b0c6e52e7d58de867148fda0dd9f49
+  specs:
+    bootstrap (5.3.2)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 2.11.8, < 3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -77,6 +85,8 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
+    autoprefixer-rails (10.4.16.0)
+      execjs (~> 2)
     base64 (0.2.0)
     bcrypt (3.1.20)
     bigdecimal (3.1.6)
@@ -96,6 +106,9 @@ GEM
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
     crass (1.0.6)
+    dartsass-rails (0.5.0)
+      railties (>= 6.0.0)
+      sass-embedded (~> 1.63)
     date (3.3.4)
     debug (1.9.1)
       irb (~> 1.10)
@@ -104,12 +117,14 @@ GEM
     drb (2.2.0)
       ruby2_keywords
     erubi (1.12.0)
+    execjs (2.9.1)
     faraday (2.9.0)
       faraday-net_http (>= 2.0, < 3.2)
     faraday-net_http (3.1.0)
       net-http
     globalid (1.2.1)
       activesupport (>= 6.1)
+    google-protobuf (3.25.2)
     hashie (5.0.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
@@ -171,6 +186,7 @@ GEM
       rack (>= 1.2, < 4)
       snaky_hash (~> 2.0)
       version_gem (~> 1.1)
+    popper_js (2.11.8)
     propshaft (0.8.0)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -249,6 +265,12 @@ GEM
     rspec-support (3.13.0)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
+    sass-embedded (1.70.0-aarch64-linux-gnu)
+      google-protobuf (~> 3.25)
+    sass-embedded (1.70.0-arm64-darwin)
+      google-protobuf (~> 3.25)
+    sass-embedded (1.70.0-x86_64-linux-gnu)
+      google-protobuf (~> 3.25)
     selenium-webdriver (4.17.0)
       base64 (~> 0.2)
       rexml (~> 3.2, >= 3.2.5)
@@ -299,7 +321,9 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  bootstrap!
   capybara
+  dartsass-rails
   debug
   importmap-rails
   jbuilder
