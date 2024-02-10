@@ -10,11 +10,11 @@
     <%= password_field_tag :password, nil, class: 'form-control', required: true %>
   </div>
 
-  <div class="form-group">
+  <div class="form-check">
+    <%= check_box_tag :remember_me, class: "form-check-input" %>
     <%= label_tag :remember_me %>
-    <%= check_box_tag :remember_me %>
   </div>
 
   </p>
-  <%= submit_tag 'Log In', class: 'btn btn-primary btn-lg' %>
+  <%= submit_tag 'Log In', class: 'btn btn-primary' %>
 <% end %>
