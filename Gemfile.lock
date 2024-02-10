@@ -93,6 +93,8 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
+    bootstrap_views_generator (0.1.16)
+      railties (>= 6)
     builder (3.2.4)
     capybara (3.40.0)
       addressable
@@ -186,6 +188,7 @@ GEM
       rack (>= 1.2, < 4)
       snaky_hash (~> 2.0)
       version_gem (~> 1.1)
+    pagy (6.4.3)
     popper_js (2.11.8)
     propshaft (0.8.0)
       actionpack (>= 7.0.0)
@@ -322,11 +325,13 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   bootstrap!
+  bootstrap_views_generator
   capybara
   dartsass-rails
   debug
   importmap-rails
   jbuilder
+  pagy
   propshaft
   puma (>= 5.0)
   rails (~> 7.1.3)

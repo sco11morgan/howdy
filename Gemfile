@@ -8,6 +8,7 @@ gem "rails", "~> 7.1.3"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 gem "bootstrap", git: "https://github.com/twbs/bootstrap-rubygem"
+gem "pagy"
 gem "dartsass-rails"
 
 # Use sqlite3 as the database for Active Record
@@ -57,6 +58,8 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  gem "bootstrap_views_generator"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
