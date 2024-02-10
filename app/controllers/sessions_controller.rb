@@ -8,8 +8,9 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(email: params[:email])
     auto_login(@user)
+
     # if login(params[:email], params[:password], params[:remember_me])
-    if @user && auto_login(@user)
+    if @user && logged_in?
       flash[:success] = "Welcome back!"
       redirect_back_or_to root_path
     else
