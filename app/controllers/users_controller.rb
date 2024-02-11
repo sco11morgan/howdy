@@ -14,10 +14,12 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @teams = Team.all
   end
 
   # GET /users/1/edit
   def edit
+    @teams = Team.all
   end
 
   # POST /users or /users.json
@@ -58,6 +60,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :email)
+      params.require(:user).permit(:name, :email, :team_id)
     end
 end
