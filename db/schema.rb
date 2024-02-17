@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_11_160810) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_17_231315) do
   create_table "posts", force: :cascade do |t|
     t.text "message"
     t.integer "user_id", null: false
@@ -23,6 +23,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_11_160810) do
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "team_questions", force: :cascade do |t|
+    t.text "message"
+    t.integer "index"
+    t.integer "team_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_team_questions_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -48,4 +57,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_11_160810) do
   end
 
   add_foreign_key "posts", "users"
+  add_foreign_key "team_questions", "teams"
 end
