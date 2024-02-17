@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
   get "admin/connections", to: "admin#connections"
-  namespace :admin do
-    resources :jira
-    resources :sendgrid
-    resources :slack
-  end
   get "admin/setup"
   resources :teams
   resources :posts
