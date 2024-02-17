@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "admin", to: "admin#index"
+  get "admin/connections", to: "admin#connections"
   namespace :admin do
     resources :jira
     resources :sendgrid
