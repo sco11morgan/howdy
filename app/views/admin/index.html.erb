@@ -1,0 +1,37 @@
+<h1>Admin Panel</h1>
+
+<div class="row">
+<div class="col-sm-4">
+  <div class="card" >
+    <%= render "card_header", name: "JIRA", enabled: @jira_enabled %>
+    <div class="card-body">
+    	<p class="card-text">
+    	  JIRA is <%= "not" unless @jira_enabled %> configured
+      </p>
+    	<a href="#" class="btn btn-primary <%= "disabled" unless @jira_enabled %>">Test JIRA</a>
+    </div>
+  </div>
+</div>
+<div class="col-sm-4">
+  <div class="card">
+    <%= render "card_header", name: "SendGrid", enabled: @sendgrid_enabled %>
+    <div class="card-body">
+    	<p class="card-text">
+    	  SendGrid is <%= "not" unless @sendgrid_enabled %> configured
+    	</p>
+    	<a href="#" class="btn btn-primary <%= "disabled" unless @sendgrid_enabled %>">Test SendGrid</a>
+    </div>
+  </div>
+</div>
+<div class="col-sm-4">
+  <div class="card">
+    <%= render "card_header", name: "Slack", enabled: @slack_enabled %>
+    <div class="card-body">
+      <p class="card-text">
+        Slack is <%= "not" unless @slack_enabled %> configured
+      </p>
+      <a href="#" class="btn btn-primary <%= "disabled" unless @slack_enabled %>">Test Slack</a>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get "admin", to: "admin#index"
+  namespace :admin do
+    resources :jira
+    resources :sendgrid
+    resources :slack
+  end
+  get "admin/setup"
   resources :teams
   resources :posts
   resources :questions
