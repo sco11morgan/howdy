@@ -35,4 +35,8 @@ module ApplicationHelper
       end)
     end
   end
+
+  def is_active(this_controller)
+    controller_name == this_controller.to_s ? "active" : nil        
+  end
 end
