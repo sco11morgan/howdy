@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :require_login
+  helper_method :current_admin
+
+  def current_admin
+    current_user&.admin
+  end
 
   private
 
