@@ -10,3 +10,4 @@ pin "jquery", to: "https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.js"
 pin "bootstrap", to: "bootstrap.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true
 
+pin "@github/markdown-toolbar-element", to: "https://ga.jspm.io/npm:@github/markdown-toolbar-element@2.1.1/dist/index.js"

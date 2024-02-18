@@ -17,6 +17,7 @@ document.addEventListener("turbo:load", function () {
 import "@hotwired/turbo-rails"
 import "controllers"
 
+import "@github/markdown-toolbar-element"
 
 //= require bootstrap-sprockets
 

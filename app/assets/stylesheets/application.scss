@@ -3,3 +3,10 @@
 
 @import "./minty";
 @import "./custom";
+@import "./action_markdown";
+@import "./action_markdown_toolbar";
+
+textarea {
+  width: 300px;
+  height: 300px;
+}

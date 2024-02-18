@@ -8,6 +8,8 @@ gem "rails", "~> 7.1.3"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 gem "bootstrap", git: "https://github.com/twbs/bootstrap-rubygem"
+gem "action_markdown"
+
 gem "pagy"
 gem "dartsass-rails"
 
