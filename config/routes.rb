@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :questions
   resources :users
+  resources :user_teams
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :sessions, only: [:new, :create, :destroy]

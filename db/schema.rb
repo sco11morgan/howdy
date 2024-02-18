@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_18_174920) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_18_185536) do
   create_table "action_markdown_markdown_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -56,6 +56,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_18_174920) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_user_teams_on_team_id"
+    t.index ["user_id", "team_id"], name: "index_user_teams_on_user_id_and_team_id", unique: true
     t.index ["user_id"], name: "index_user_teams_on_user_id"
   end
 
