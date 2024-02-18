@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_teams
   get "admin/connections", to: "admin#connections"
   get "admin/setup"
   resources :teams

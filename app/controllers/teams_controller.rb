@@ -13,6 +13,7 @@ class TeamsController < ApplicationController
   # GET /teams/new
   def new
     @team = Team.new
+    @users = []
   end
 
   # GET /teams/1/edit

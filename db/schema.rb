@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_17_231315) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_18_174920) do
+  create_table "action_markdown_markdown_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_markdown_markdown_texts_uniqueness", unique: true
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text "message"
     t.integer "user_id", null: false
@@ -40,6 +50,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_17_231315) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_teams", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "team_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_user_teams_on_team_id"
+    t.index ["user_id"], name: "index_user_teams_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "name"
@@ -50,12 +69,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_17_231315) do
     t.string "remember_me_token"
     t.datetime "remember_me_token_expires_at"
     t.boolean "admin"
-    t.integer "team_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
-    t.index ["team_id"], name: "index_users_on_team_id"
   end
 
   add_foreign_key "posts", "users"
   add_foreign_key "team_questions", "teams"
+  add_foreign_key "user_teams", "teams"
+  add_foreign_key "user_teams", "users"
 end
