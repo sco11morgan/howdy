@@ -1,8 +1,48 @@
-<h1>Teams</h1>
+<main class="container">
 
-<dl>
-  <dt>Name:</dt>
-  <dd><%= @team.name %></dd>
-</dl>
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+<h1>Team - <%= @team.name %></h1>
+
+<div class="col-sm-8">
+  <div class="card" >
+    <div class="card-header">
+      Users
+    </div>
+
+<div class="card-body">
+<table class="table table-striped table-hover table-sm">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th colspan="3" scope="col"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @team.user_teams.each do |user_team| %>
+      <tr>
+        <td><%= user_team.user.name %></td>
+        <td><%= user_team.user.email %></td>
+        <td><%= link_to 'Remove', user_team, data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div>
+    <%= link_to "Add user",
+                new_user_team_path(@team),
+                class: "btn btn-primary h5" %>
+
+</div>
+
+</div>
+</div>
+
+<%= link_to sanitize("&larr; Back to teams"), teams_path %> |
+<%= link_to 'Edit', edit_team_path(@team) %>
+
+</main>

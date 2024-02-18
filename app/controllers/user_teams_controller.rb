@@ -13,10 +13,14 @@ class UserTeamsController < ApplicationController
   # GET /user_teams/new
   def new
     @user_team = UserTeam.new
+    @users = User.all.order(:name)
+    @teams = Team.all.order(:name)
   end
 
   # GET /user_teams/1/edit
   def edit
+    @users = User.all.order(:name)
+    @teams = Team.all.order(:name)
   end
 
   # POST /user_teams or /user_teams.json
@@ -25,7 +29,7 @@ class UserTeamsController < ApplicationController
 
     respond_to do |format|
       if @user_team.save
-        # format.html { redirect_to user_team_url(@user_team), notice: "User team was successfully created." }
+        format.html { redirect_to user_team_url(@user_team), notice: "User team was successfully created." }
         format.json { render :show, status: :created, location: @user_team }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +42,7 @@ class UserTeamsController < ApplicationController
   def update
     respond_to do |format|
       if @user_team.update(user_team_params)
-        # format.html { redirect_to user_team_url(@user_team), notice: "User team was successfully updated." }
+        format.html { redirect_to user_team_url(@user_team), notice: "User team was successfully updated." }
         format.json { render :show, status: :ok, location: @user_team }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +56,7 @@ class UserTeamsController < ApplicationController
     @user_team.destroy!
 
     respond_to do |format|
-      # format.html { redirect_to user_teams_url, notice: "User team was successfully destroyed." }
+      format.html { redirect_to user_teams_url, notice: "User team was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -65,6 +69,6 @@ class UserTeamsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_team_params
-      params.fetch(:user_team, {})
+      params.require(:user_team).permit(:user_id, :team_id)
     end
 end

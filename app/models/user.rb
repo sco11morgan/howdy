@@ -9,6 +9,6 @@ class User < ApplicationRecord
   end
 
   def team
-    teams.first if teams.size == 1
+    user_teams.first.team if user_teams.size == 1
   end
 end

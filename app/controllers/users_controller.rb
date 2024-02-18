@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    @users = User.all.order(:name)
   end
 
   # GET /users/1 or /users/1.json
@@ -14,12 +14,12 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
-    @teams = Team.all
+    @teams = Team.all.order(:name)
   end
 
   # GET /users/1/edit
   def edit
-    @teams = Team.all
+    @teams = Team.all.order(:name)
   end
 
   # POST /users or /users.json
