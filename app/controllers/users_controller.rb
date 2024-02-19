@@ -24,11 +24,12 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
-    @user = User.new(user_params)
+    @user = User.new(user_params.except(:team_id))
 
     if @user.save
       auto_login(@user)
       flash[:success] = "Welcome to Howdy"
+      UserTeam.create(team_id: user_params[:team_id], user: @user)
       # redirect_to user_url(@user), notice: "User was successfully created."
       redirect_to root_url
     else
@@ -38,7 +39,7 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    if @user.update(user_params)
+    if @user.update(user_params.except(:team_id))
       redirect_to user_url(@user), notice: "User was successfully updated."
     else
       render :edit, status: :unprocessable_entity

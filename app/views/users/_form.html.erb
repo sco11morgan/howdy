@@ -23,11 +23,12 @@
     <%= form.text_field :email, class: "form-control" %>
   </div>
 
+<% if user.new_record? %>
   <div>
     <%= form.label :team %>
     <%= form.select :team_id, options_from_collection_for_select(@teams, :id, :name), {}, class: "form-control" %>
   </div>
-
+<% end %>
   </p>
 
   <div>
