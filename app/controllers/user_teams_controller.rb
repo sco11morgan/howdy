@@ -18,6 +18,10 @@ class UserTeamsController < ApplicationController
     @only_user = new_params[:only_user]
     @user_team = UserTeam.new(team_id: @team_id)
     @users = User.all.order(:name)
+    if @team_id
+      @team = Team.find(@team_id)
+      @users = @users - @team.users
+    end
     @teams = Team.all.order(:name)
   end
 
