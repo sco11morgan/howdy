@@ -7,3 +7,13 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+u1 = User.create!(name: "Kyler Matthews", email: "kmatthews791@swehttamrelyk.com")
+u2 = User.create!(name: "Brandi Sims", email: "bsims726@smisidnarb.biz")
+u3 = User.create!(name: "Derek Wong", email: "dwong277@gnowkered.org")
+u4 = User.create!(name: "Amanda Davis", email: "adavis36@sivadadnama.biz")
+
+
+team_a = Team.create(name: "Unity")
+team_b = Team.create(name: "Eclipse")
+team_c = Team.create(name: "Save Trees")
