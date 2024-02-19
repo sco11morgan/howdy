@@ -21,4 +21,4 @@ import "@github/markdown-toolbar-element"
 
 //= require bootstrap-sprockets
 
-console.log($); // ok
+// console.log($); // ok

@@ -1,5 +1,7 @@
 <h1>New User Teams</h1>
 
-<%= render 'form', user_team: @user_team %>
+<%= turbo_frame_tag UserTeam.new do %>
+  <%= render 'form', user_team: @user_team %>
+<% end %>
 
 <%= link_to 'Back', user_teams_path %>

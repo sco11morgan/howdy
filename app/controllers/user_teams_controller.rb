@@ -12,6 +12,10 @@ class UserTeamsController < ApplicationController
 
   # GET /user_teams/new
   def new
+    new_params = params.permit(:team_id, :only_user, :only_team)
+    @team_id = new_params[:team_id]
+    @only_team = new_params[:only_team]
+    @only_user = new_params[:only_user]
     @user_team = UserTeam.new
     @users = User.all.order(:name)
     @teams = Team.all.order(:name)
@@ -25,12 +29,16 @@ class UserTeamsController < ApplicationController
 
   # POST /user_teams or /user_teams.json
   def create
+        # binding.break
     @user_team = UserTeam.new(user_team_params)
+
+
 
     respond_to do |format|
       if @user_team.save
         format.html { redirect_to user_team_url(@user_team), notice: "User team was successfully created." }
         format.json { render :show, status: :created, location: @user_team }
+        format.turbo_stream { flash.now[:notice] = "Successfully added." }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @user_team.errors, status: :unprocessable_entity }
