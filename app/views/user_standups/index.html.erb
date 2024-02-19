@@ -1,0 +1,32 @@
+<h1>User Standups</h1>
+
+<table class="table table-striped table-hover table-sm">
+  <thead>
+    <tr>
+      <th scope="col">Team</th>
+      <th scope="col">User</th>
+      <th scope="col">Standup</th>
+      <th colspan="3" scope="col"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_standups.each do |user_standup| %>
+      <tr>
+        <td><%= user_standup.team_id %></td>
+        <td><%= user_standup.user_id %></td>
+        <td><%= user_standup.standup_id %></td>
+        <td><%= link_to 'Show', user_standup %></td>
+        <td><%= link_to 'Edit', edit_user_standup_path(user_standup) %></td>
+        <td><%= link_to 'Destroy', user_standup, data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= render 'shared/pagination' %>
+<br>
+<%= link_to 'New User Standup', new_user_standup_path %>

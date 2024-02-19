@@ -18,6 +18,7 @@
 #
 class Standup < ApplicationRecord
   belongs_to :team
+  has_many :user_standups
 
   def questions
     Question.all.map(&:message)

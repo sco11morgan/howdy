@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_standups
   resources :standups, only: [:new, :create, :index, :show]
   resources :user_teams
   get "admin/connections", to: "admin#connections"
