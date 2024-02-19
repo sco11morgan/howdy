@@ -16,7 +16,7 @@ class UserTeamsController < ApplicationController
     @team_id = new_params[:team_id]
     @only_team = new_params[:only_team]
     @only_user = new_params[:only_user]
-    @user_team = UserTeam.new
+    @user_team = UserTeam.new(team_id: @team_id)
     @users = User.all.order(:name)
     @teams = Team.all.order(:name)
   end
