@@ -27,6 +27,7 @@ team_c = Team.create(name: "Save Trees")
 UserTeam.create(user: u1, team: team_a)
 UserTeam.create(user: u2, team: team_a)
 UserTeam.create(user: u3, team: team_a)
+UserTeam.create(user: u5, team: team_a)
 
 users = [u1, u2, u3]
 

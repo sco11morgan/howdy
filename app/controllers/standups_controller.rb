@@ -24,6 +24,7 @@ class StandupsController < ApplicationController
   def create
     standup_params[:date] = Date.today if standup_params[:date] == "today"
     @standup = Standup.new(standup_params)
+    @teams = current_user.teams.order(:name)
 
     respond_to do |format|
       if @standup.save

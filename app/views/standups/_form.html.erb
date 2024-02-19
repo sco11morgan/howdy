@@ -7,10 +7,12 @@
     <%= f.label :date %>
     <%= f.date_field :date, class: 'form-control' %>
   </div>
-  <div>
+
+  <div class="<%= "d-none" if @teams.size == 1 %>">
     <%= f.label :team %>
     <%= f.select :team_id, options_from_collection_for_select(@teams, :id, :name), {}, class: "form-control" %>
   </div>
+
 <p></p>
   <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>
