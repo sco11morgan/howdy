@@ -17,7 +17,7 @@
   </thead>
 
   <tbody>
-    <% @team.user_teams.each do |user_team| %>
+    <% @team.user_teams_ordered_by_name.each do |user_team| %>
       <tr>
         <td><%= user_team.user.name %></td>
         <td><%= user_team.user.email %></td>
