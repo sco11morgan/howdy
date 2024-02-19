@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  resources :standups, only: [:new, :create, :index, :show]
   resources :user_teams
   get "admin/connections", to: "admin#connections"
   get "admin/setup"
   resources :teams
-  resources :posts
+    resources :posts
   resources :questions
   resources :users
   resources :user_teams

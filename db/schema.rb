@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_18_185536) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_19_181800) do
   create_table "action_markdown_markdown_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -22,10 +22,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_18_185536) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.text "message"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "team_id", null: false
+    t.date "standup_date"
+    t.index ["team_id"], name: "index_posts_on_team_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -33,6 +35,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_18_185536) do
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "standups", force: :cascade do |t|
+    t.date "date"
+    t.integer "team_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_standups_on_team_id"
   end
 
   create_table "team_questions", force: :cascade do |t|
@@ -74,7 +84,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_18_185536) do
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
   end
 
+  add_foreign_key "posts", "teams"
   add_foreign_key "posts", "users"
+  add_foreign_key "standups", "teams"
   add_foreign_key "team_questions", "teams"
   add_foreign_key "user_teams", "teams"
   add_foreign_key "user_teams", "users"
