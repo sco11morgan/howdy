@@ -29,11 +29,11 @@
     </div>
 
 <div class="card-body">
-      <%= link_to "New User",
-                new_user_team_path(@team),
-                data: { turbo_frame: dom_id(UserTeam.new) },
-                class: "btn btn-primary" %>
-  <%= turbo_frame_tag UserTeam.new %>
+
+  <%= link_to "Add User",
+          new_user_team_path(team_id: @team.id, only_user: true),
+          data: { turbo_frame: dom_id(UserTeam.new) },
+          class: "btn btn-primary" %>
 
 <table class="table table-striped table-hover table-sm">
   <thead>
@@ -58,6 +58,7 @@
   </tbody>
 </table>
 
+  <%= turbo_frame_tag UserTeam.new %>
 
 </div>
 
