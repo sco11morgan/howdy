@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_19_200525) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_19_202139) do
   create_table "action_markdown_markdown_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -27,8 +27,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_19_200525) do
     t.datetime "updated_at", null: false
     t.integer "team_id", null: false
     t.date "standup_date"
+    t.integer "user_standup_id"
+    t.text "question"
     t.index ["team_id"], name: "index_posts_on_team_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
+    t.index ["user_standup_id"], name: "index_posts_on_user_standup_id"
   end
 
   create_table "questions", force: :cascade do |t|

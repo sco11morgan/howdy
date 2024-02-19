@@ -25,4 +25,5 @@ class UserStandup < ApplicationRecord
   belongs_to :team
   belongs_to :user
   belongs_to :standup
+  has_many :posts
 end

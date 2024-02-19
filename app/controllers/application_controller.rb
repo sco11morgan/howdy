@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
     current_user&.admin
   end
 
+  def current_team
+    current_user&.team
+  end
+
   private
 
   def not_authenticated

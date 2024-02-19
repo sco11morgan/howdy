@@ -1,17 +1,11 @@
-<div id="<%= dom_id user_standup %>">
-  <p>
-    <strong>Team:</strong>
-    <%= user_standup.team_id %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= user_standup.user_id %>
-  </p>
-
-  <p>
-    <strong>Standup:</strong>
-    <%= user_standup.standup_id %>
-  </p>
-
+<div class="row">
+  <div class="col-md-4 mb-3">
+    <%= render "user_post", post: user_standup.posts.first %>
+  </div>
+  <div class="col-md-4 mb-3">
+    <%= render "user_post", post: user_standup.posts.second %>
+  </div>
+  <div class="col-md-4 mb-3">
+    <%= render "user_post", post: user_standup.posts.third %>
+  </div>
 </div>

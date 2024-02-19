@@ -3,7 +3,8 @@ class UserStandupsController < ApplicationController
 
   # GET /user_standups or /user_standups.json
   def index
-    @user_standups = UserStandup.all
+    # @user_standups = UserStandup.all.includes(:standup).order("standups.date desc")
+    @user_standups = UserStandup.all.reverse
   end
 
   # GET /user_standups/1 or /user_standups/1.json
@@ -12,7 +13,8 @@ class UserStandupsController < ApplicationController
 
   # GET /user_standups/new
   def new
-    @user_standup = UserStandup.new
+    standup = Standup.find_or_create_by(team: current_team, date: Date.today)
+    @user_standup = UserStandup.new(user: current_user, team: current_team, standup: standup)
   end
 
   # GET /user_standups/1/edit

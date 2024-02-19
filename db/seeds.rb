@@ -31,10 +31,13 @@ UserTeam.create(user: u5, team: team_a)
 
 users = [u1, u2, u3]
 
-[Date.today, Date.today-1, Date.today-2].each do |date|
-  Standup.create(team: team_a, date: date)
+[Date.today, Date.today-1, Date.today-2].reverse.each do |date|
+  s = Standup.create(team: team_a, date: date)
   users.each do |user|
-    Post.create(team: team_a, user: user, standup_date: date, content: Faker::Lorem.paragraph(sentence_count: 3, random_sentences_to_add: 4))
+    us = UserStandup.create(team: team_a, user: user, standup: s)
+    Question.all.each do |question|
+      Post.create(user_standup: us, question: question.message, team: team_a, user: user, standup_date: date, content: Faker::Lorem.paragraph(sentence_count: 3, random_sentences_to_add: 4))
+    end
   end
 end
 

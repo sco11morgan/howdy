@@ -1,12 +1,6 @@
-<h1>User Standups</h1>
+<h1><%= @user_standup.team.name %> - <%= @user_standup.user.name %> - <%= @user_standup.standup.date %> </h1>
 
-<dl>
-  <dt>Team:</dt>
-  <dd><%= @user_standup.team %></dd>
-  <dt>User:</dt>
-  <dd><%= @user_standup.user %></dd>
-  <dt>Standup:</dt>
-  <dd><%= @user_standup.standup %></dd>
-</dl>
+<%= render @user_standup %>
+
 <%= link_to 'Edit', edit_user_standup_path(@user_standup) %> |
 <%= link_to 'Back', user_standups_path %>

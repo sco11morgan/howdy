@@ -1,15 +1,15 @@
 <%= form_with(model: @user_standup, local: true) do |f| %>
   <%= errors_for(@user_standup) %>
 
-  <div class="form-group">
+  <div class="<%= "d-none" if @user_standup.team %>">
     <%= f.label :team %>
     <%= f.text_field :team, class: 'form-control' %>
   </div>
-  <div class="form-group">
+  <div class="<%= "d-none" if @user_standup.user %>">
     <%= f.label :user %>
     <%= f.text_field :user, class: 'form-control' %>
   </div>
-  <div class="form-group">
+  <div class="<%= "d-none" if @user_standup.standup %>">
     <%= f.label :standup %>
     <%= f.text_field :standup, class: 'form-control' %>
   </div>
