@@ -1,5 +1,5 @@
 class StandupsController < ApplicationController
-  before_action :set_standup, only: %i[ show edit update destroy ]
+  before_action :set_standup, only: %i[ show edit ]
 
   # GET /standups or /standups.json
   def index
@@ -22,6 +22,7 @@ class StandupsController < ApplicationController
 
   # POST /standups or /standups.json
   def create
+    standup_params[:date] = Date.today if standup_params[:date] == "today"
     @standup = Standup.new(standup_params)
 
     respond_to do |format|
@@ -32,29 +33,6 @@ class StandupsController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @standup.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /standups/1 or /standups/1.json
-  def update
-    respond_to do |format|
-      if @standup.update(standup_params)
-        format.html { redirect_to standup_url(@standup), notice: "Standup was successfully updated." }
-        format.json { render :show, status: :ok, location: @standup }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @standup.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /standups/1 or /standups/1.json
-  def destroy
-    @standup.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to standups_url, notice: "Standup was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 

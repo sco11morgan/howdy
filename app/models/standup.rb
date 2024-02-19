@@ -18,4 +18,8 @@
 #
 class Standup < ApplicationRecord
   belongs_to :team
+
+  def questions
+    Question.all.map(&:message)
+  end
 end

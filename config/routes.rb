@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :questions
   resources :users
   resources :user_teams
+  resources :home, only: [:index]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :sessions, only: [:new, :create, :destroy]
@@ -20,5 +21,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "posts#index"
+  root "home#index"
 end

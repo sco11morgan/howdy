@@ -20,6 +20,7 @@
 #  user_id  (user_id => users.id)
 #
 class Post < ApplicationRecord
+  belongs_to :team
   belongs_to :user
   has_markdown :content
   validates :content, presence: true
