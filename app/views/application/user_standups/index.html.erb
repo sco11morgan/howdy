@@ -1,6 +1,5 @@
-<h1>Standup - <%= @standup.team.name%></h1>
 
-<% @standup.user_standups.each do |user_standup| %>
+<% @user_standups.each do |user_standup| %>
   <h3><%= user_standup.user.name %> - <%= user_standup.standup.date %> </h3>
   <%= render user_standup %>
   <p>
@@ -8,5 +7,6 @@
   </p>
 <% end %>
 
-
-<%= link_to 'Back', standups_path %>
+<%= render 'shared/pagination' %>
+<br>
+<%= link_to 'New User Standup', new_user_standup_path %>
