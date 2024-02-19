@@ -2,14 +2,8 @@
 
 <h1>Questions</h1>
 
-<div class="container">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Content</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
+<div class="form-group col-sm-6">
+  <table class="table table-striped table-hover table-sm">
     <tbody>
       <% @questions.each do |question| %>
         <tr>
@@ -23,6 +17,6 @@
       <% end %>
     </tbody>
   </table>
-</div>
 
+</div>
 <%= link_to "New question", new_question_path %>
