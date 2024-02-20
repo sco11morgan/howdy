@@ -67,6 +67,6 @@ class UserStandupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_standup_params
-      params.require(:user_standup).permit(:team_id, :user_id, :standup_id)
+      params.require(:user_standup).permit(:team_id, :user_id, :standup_id, posts_attributes: [:id, :content])
     end
 end

@@ -1,3 +1,5 @@
+<div class="col-sm-4">
+
 <%= form_with(model: @user_standup, local: true) do |f| %>
   <%= errors_for(@user_standup) %>
 
@@ -13,7 +15,15 @@
     <%= f.label :standup %>
     <%= f.text_field :standup, class: 'form-control' %>
   </div>
+  <%= f.fields_for :posts do |post_form| %>
+    <div>
+      <%= post_form.object.question %>
+      <%= post_form.markdown_field :content %>
+    </div>
+  <% end %>
   <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>
+
+</div>

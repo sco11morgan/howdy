@@ -26,4 +26,5 @@ class UserStandup < ApplicationRecord
   belongs_to :user
   belongs_to :standup
   has_many :posts
+  accepts_nested_attributes_for :posts
 end
