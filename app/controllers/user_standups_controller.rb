@@ -13,8 +13,12 @@ class UserStandupsController < ApplicationController
 
   # GET /user_standups/new
   def new
+    @users = User.all
+    @teams = Team.all
     standup = Standup.find_or_create_by(team: current_team, date: Date.today)
-    @user_standup = UserStandup.new(user: current_user, team: current_team, standup: standup)
+    @standups = Standup.all
+    posts = standup.questions.map { |question| Post.new(team: current_team, user: current_user, standup_date: standup.date, question: question) }
+    @user_standup = UserStandup.new(user: current_user, team: current_team, standup: standup, posts: posts)
   end
 
   # GET /user_standups/1/edit
@@ -23,7 +27,18 @@ class UserStandupsController < ApplicationController
 
   # POST /user_standups or /user_standups.json
   def create
+    team_id = user_standup_params[:team_id]
+    user_id = user_standup_params[:user_id]
+    user_standup_params[:posts_attributes].each do |_, post|
+      post[:team_id] = team_id
+      post[:team] = Team.find(team_id)
+      post[:user_id] = user_id
+    end
+
     @user_standup = UserStandup.new(user_standup_params)
+    @users = User.all
+    @teams = Team.all
+    @standups = Standup.all
 
     respond_to do |format|
       if @user_standup.save
@@ -67,6 +82,6 @@ class UserStandupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_standup_params
-      params.require(:user_standup).permit(:team_id, :user_id, :standup_id, posts_attributes: [:id, :content])
+      params.require(:user_standup).permit(:team_id, :user_id, :standup_id, posts_attributes: [:id, :content, :team_id, :team, :user_id])
     end
 end
