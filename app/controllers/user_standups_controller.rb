@@ -29,13 +29,15 @@ class UserStandupsController < ApplicationController
   def create
     team_id = user_standup_params[:team_id]
     user_id = user_standup_params[:user_id]
-    user_standup_params[:posts_attributes].each do |_, post|
+    create_params_hash = user_standup_params.to_h
+    create_params_hash[:posts_attributes].each do |_, post|
       post[:team_id] = team_id
       post[:team] = Team.find(team_id)
       post[:user_id] = user_id
+      post[:content] = "<empty>" if post[:content].blank?
     end
 
-    @user_standup = UserStandup.new(user_standup_params)
+    @user_standup = UserStandup.new(create_params_hash)
     @users = User.all
     @teams = Team.all
     @standups = Standup.all
